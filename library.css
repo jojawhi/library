@@ -144,21 +144,9 @@ html, body, #pageContainer {
     align-self: flex-start;
 }
 
-#readContainer {
+.readContainer {
     grid-area: read;
     width: 100%;
-}
-
-#readStatusTileLabel {
-    justify-self: flex-end;
-}
-
-#readStatusLabel {
-    font-weight: 600;
-}
-
-#readStatusCheckbox {
-    margin-left: 10px;
 }
 
 .description, .pages, label {
@@ -201,14 +189,15 @@ html, body, #pageContainer {
     flex-direction: column;
 }
 
-.formLabel {
+form label {
     font-size: 1.25rem;
     font-weight: 600;
     padding-bottom: 5px;
     color: var(--neutral-1);
 }
 
-.formInputText {
+form input,
+form select {
     font-size: 1rem;
     height: 2rem;
     padding: 3px;
@@ -219,7 +208,7 @@ html, body, #pageContainer {
     transition: all 0.3s;
 }
 
-.formInputText:focus-within {
+form input:focus-within {
     border: 2px var(--button-2) solid;
     outline: none;
 }
