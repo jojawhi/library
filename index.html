@@ -32,13 +32,13 @@
         </div>
       
         <div class="container" id="formContainer">
-            <form action="" method="get" id="newBookForm">
-                <label for="bookTitle" class ="formLabel" id="bookTitleLabel">Title:</label>
-                <input type="text" name="bookTitle" class ="formInputText" id="#bookTitleInput">
+            <form id="newBookForm">
+                <label for="bookTitle" class ="formLabel" id="bookTitleLabel" required>Title:</label>
+                <input type="text" name="bookTitle" class ="formInputText" id="bookTitleInput">
                 <label for="bookAuthor" class ="formLabel" id="bookAuthorLabel">Author:</label>
-                <input type="text" name="bookAuthor" class ="formInputText" id="#bookAuthorInput">
+                <input type="text" name="bookAuthor" class ="formInputText" id="bookAuthorInput" required>
                 <label for="bookPages" class ="formLabel" id="bookPagesLabel">Number of Pages:</label>
-                <input type="number" name="bookPages" class ="formInputText" id="#bookPagesInput">
+                <input type="number" name="bookPages" class ="formInputText" id="bookPagesInput" required>
                 <!--
                 <label for="readStatusForm" class ="formLabel customCheckboxContainer" id="readStatusFormLabel"><span class="labelText">Already Read?</span>
                     <input type="checkbox" name="readStatusForm" id="#readStatusFormCheckbox">
@@ -46,8 +46,8 @@
                 </label>
                 -->
                 <label for="readStatusInput" class="formLabel">Read: </label>
-                <select name="readStatusInput" class="formInputText" id="readStatusInput">
-                    <option value="">Select...</option>
+                <select name="readStatusInput" class="formInputText" id="readStatusInput" required>
+                    <option value="null">Select...</option>
                     <option value="true">Yes</option>
                     <option value="false">Not yet</option>
                 </select>

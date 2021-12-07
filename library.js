@@ -17,10 +17,8 @@ function Book(title, author, pages, read) {
 }
 
 const sampleBook = new Book("The Hobbit", "J.R.R. Tolkien", "295", "read");
-
 const libraryContainer = document.querySelector('#libraryContainer');
-
-const addBookButton = document.getElementById('#addBookButton');
+const addBookButton = document.getElementById('addBookButton');
 
 let libraryArray = [
     {
@@ -43,36 +41,6 @@ let libraryArray = [
     },
 ];
 
-const getBookFromInput = () => {
-    /*
-    1. accept form input parameters
-    2. create new book object from form input
-    */
-    const bookTitleInput = document.querySelector('#bookTitleInput').value;
-    const bookAuthorInput = document.querySelector('#bookAuthorInput').value;
-    const bookPagesInput = document.querySelector('#bookPagesInput').value;
-    const readStatusInput = document.querySelector('#readStatusInput').value;
-
-    return new Book (bookTitleInput, bookAuthorInput, bookPagesInput, readStatusInput);
-
-}
-
-const addBookToLibrary = () => {
-
-    /*
-    1. store the result of getBookFromInput(); in a newBook variable
-    2. push newBook to libraryArray
-    3. rerun displayBooks() to update the library
-    */
-
-    const newBook = getBookFromInput();
-    
-    libraryArray.push(newBook);
-
-    displayBooks();
-    
-}
-
 const displayBooks = () => {
 
     for (i = 0; i < libraryArray.length; i++) {
@@ -83,6 +51,46 @@ const displayBooks = () => {
 
 }
 
+const getBookFromInput = () => {
+
+    const bookTitleInput = document.getElementById('bookTitleInput').value;
+    const bookAuthorInput = document.getElementById('bookAuthorInput').value;
+    const bookPagesInput = document.getElementById('bookPagesInput').value;
+    const readStatusInput = document.getElementById('readStatusInput').value;
+
+    return new Book (bookTitleInput, bookAuthorInput, bookPagesInput, readStatusInput);
+
+}
+
+const addBookToLibrary = () => {
+
+    const newBook = getBookFromInput();
+
+    if (libraryArray.find(({title}) => title === newBook.title)) {
+
+        alert("This book is already in your library.")
+
+    } else {
+
+        libraryArray.push(newBook);
+
+    }
+
+    updateLibraryDisplay();
+    
+}
+
+const updateLibraryDisplay = () => {
+
+    resetLibraryDisplay();
+    displayBooks();
+
+}
+
+const resetLibraryDisplay = () => {
+    libraryContainer.innerHTML = '';
+}
+
 const createBookCard = (book) => {
 
     const bookCard = document.createElement('div');
@@ -91,13 +99,12 @@ const createBookCard = (book) => {
     const bookPages = document.createElement('p');
     const bookNumberOfPages = document.createElement('span');
     const bookCardReadButton = document.createElement('button');
-    //const checkContainer = createCheckmark(book.read);
     const bookCardRemoveButton = document.createElement('button');
     const removeButtonImage = document.createElement('img');
 
     bookCard.classList.add('book');
     if (book.read === false) {
-        bookCard.classList.add('unreadBook')
+        bookCard.classList.add('unreadBook');
     } else {
         bookCard.classList.add('readBook');
     }
@@ -105,12 +112,12 @@ const createBookCard = (book) => {
     bookAuthor.classList.add('author', 'text');
     bookPages.classList.add('pages', 'text', 'semibold');
     bookNumberOfPages.classList.add('numberOfPages');
-    if (book.read === true) {
-        bookCardReadButton.textContent = "Read"
-        bookCardReadButton.classList.add('button', 'readButton');
-    } else {
-        bookCardReadButton.textContent = "Not Read Yet"
+    if (book.read === false) {
+        bookCardReadButton.textContent = "Not Read Yet";
         bookCardReadButton.classList.add('button', 'notReadButton');
+    } else {
+        bookCardReadButton.textContent = "Read";
+        bookCardReadButton.classList.add('button', 'readButton');
     }
     bookCardRemoveButton.classList.add('removeButton');
     removeButtonImage.setAttribute('src', 'images/recycle.svg');
@@ -123,7 +130,6 @@ const createBookCard = (book) => {
     bookCard.appendChild(bookAuthor);
     bookCard.appendChild(bookPages);
     bookPages.appendChild(bookNumberOfPages);
-    //bookCard.appendChild(checkContainer);
     bookCard.appendChild(bookCardReadButton);
     bookCard.appendChild(bookCardRemoveButton);
     bookCardRemoveButton.appendChild(removeButtonImage);
@@ -131,37 +137,7 @@ const createBookCard = (book) => {
 
 }
 
-/*
-const createCheckmark = (boolean) => {
-
-    const checkContainer = document.createElement('div');
-    const checkLabel = document.createElement('label');
-    const checkLabelText = document.createElement('span');
-    const checkbox = document.createElement('input');
-    const customCheckmark = document.createElement('span');
-
-    checkContainer.classList.add('readContainer');
-    checkLabel.classList.add('text', 'semibold', 'customCheckboxContainer');
-    checkLabelText.classList.add('labelText');
-    checkLabelText.textContent = "Read: ";
-    checkbox.setAttribute('type', 'checkbox');
-    if (boolean === true) {
-        checkbox.checked = true;
-    } else {
-        checkbox.checked = false;
-    }
-    checkbox.classList.add('readStatusTileCheckbox');
-    customCheckmark.classList.add('checkmark');
-
-    checkContainer.appendChild(checkLabel);
-    checkLabel.appendChild(checkLabelText);
-    checkLabel.appendChild(checkbox);
-    checkLabel.appendChild(customCheckmark);
-    
-    return checkContainer;
-
-}
-*/
+displayBooks();
 
 function removeBookFromLibrary() {
     /*
@@ -172,7 +148,6 @@ function removeBookFromLibrary() {
     */
 }
 
-
 const changeReadStatus = (book) => {
     book.read = !book.read;
     if (book.read === true) {
@@ -180,15 +155,13 @@ const changeReadStatus = (book) => {
 }
 
 
-
-
-console.log(libraryArray);
-
-displayBooks();
-
-
-
-addBookButton.addEventListener("click", () => {
-    getBookFromInput(bookTitleInput.value, bookAuthorInput.value, bookPagesInput.value, readStatusInput.value);
+addBookButton.addEventListener("click", (e) => {
+    
+    e.preventDefault();
+    
+    getBookFromInput();
     addBookToLibrary();
+
+    console.log(libraryArray);
 })
+
