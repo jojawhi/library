@@ -114,10 +114,10 @@ const createBookCard = (book) => {
     bookNumberOfPages.classList.add('numberOfPages');
     if (book.read === false) {
         bookCardReadButton.textContent = "Not Read Yet";
-        bookCardReadButton.classList.add('button', 'notReadButton');
+        bookCardReadButton.classList.add('button');
     } else {
         bookCardReadButton.textContent = "Read";
-        bookCardReadButton.classList.add('button', 'readButton');
+        bookCardReadButton.classList.add('button', 'read');
     }
     bookCardRemoveButton.classList.add('removeButton');
     removeButtonImage.setAttribute('src', 'images/recycle.svg');
@@ -135,8 +135,19 @@ const createBookCard = (book) => {
     bookCardRemoveButton.appendChild(removeButtonImage);
     libraryContainer.appendChild(bookCard);
 
-    bookCardReadButton.addEventListener('click', () => {
-        changeReadStatus(this);
+    bookCardReadButton.addEventListener('click', (e) => {
+
+        if (e.target.textContent === "Read") {
+            e.target.textContent = "Not Read Yet";
+        } else if (e.target.textContent === "Not Read Yet") {
+            e.target.textContent = "Read";
+        }
+
+        bookCardReadButton.classList.toggle('read');
+        bookCard.classList.toggle('readBook');
+
+        changeReadStatus(book);
+
     });
 
     bookCardRemoveButton.addEventListener('click', () => {
@@ -145,7 +156,9 @@ const createBookCard = (book) => {
 
 }
 
+
 displayBooks();
+
 
 function removeBookFromLibrary() {
     
@@ -159,16 +172,13 @@ function removeBookFromLibrary() {
 
 
 
-const changeReadStatus = (book) => {
-
-    book.read = !book.read;
-
-    updateLibraryDisplay();
+const changeReadStatus = (book) => { 
+    
+    book.read = !book.read
 
     console.log(libraryArray);
 
 }
-
 
 
 addBookButton.addEventListener("click", (e) => {

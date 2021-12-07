@@ -119,6 +119,9 @@ html, body, #pageContainer {
     padding: 1rem;
     align-items: center;
     border-radius: 5px;
+
+    background: var(--blue-1);
+    box-shadow: 1px 1px 6px var(--blue-2);
 }
 
 .text {
@@ -155,10 +158,12 @@ html, body, #pageContainer {
     font-weight: 600;
 }
 
+/*
 .unreadBook {
     background: var(--blue-1);
     box-shadow: 1px 1px 6px var(--blue-2);
 }
+*/
 
 .readBook {
     background: var(--green-1);
@@ -276,15 +281,16 @@ form input:focus-within {
     transform: rotate(45deg);
 }
 */
-
+/*
 .readButton {
     grid-area: read;
-    background: var(--green-3);
-}
-
-.notReadButton {
-    grid-area: read;
     background: var(--blue-3);
+}
+*/
+
+.read {
+    grid-area: read;
+    background: var(--green-3);
 }
 
 .removeButton {
