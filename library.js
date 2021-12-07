@@ -135,24 +135,40 @@ const createBookCard = (book) => {
     bookCardRemoveButton.appendChild(removeButtonImage);
     libraryContainer.appendChild(bookCard);
 
+    bookCardReadButton.addEventListener('click', () => {
+        changeReadStatus(this);
+    });
+
+    bookCardRemoveButton.addEventListener('click', () => {
+        removeBookFromLibrary();
+    });
+
 }
 
 displayBooks();
 
 function removeBookFromLibrary() {
-    /*
     
-    1. delete book object from libraryArray
-    2. run displayBooks() to update display
+    const index = libraryArray.indexOf(this);
 
-    */
+    libraryArray.splice(index, 1);
+
+    updateLibraryDisplay();
+
 }
+
+
 
 const changeReadStatus = (book) => {
+
     book.read = !book.read;
-    if (book.read === true) {
-    }
+
+    updateLibraryDisplay();
+
+    console.log(libraryArray);
+
 }
+
 
 
 addBookButton.addEventListener("click", (e) => {
@@ -164,4 +180,8 @@ addBookButton.addEventListener("click", (e) => {
 
     console.log(libraryArray);
 })
+
+
+
+
 
