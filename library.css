@@ -59,10 +59,12 @@ table {
     --white-1: #FCFBFA;
     --blue-1: hsl(210, 100%, 95%);
     --blue-2: hsl(210, 50%, 75%);
-    --blue-3: hsl(210, 70%, 25%);
+    --blue-3: hsl(210, 75%, 70%);
+    --blue-4: hsl(210, 70%, 25%);
     --green-1: hsl(150, 75%, 90%);
     --green-2: hsl(150, 50%, 75%);
-    --green-3: hsl(150, 40%, 10%);
+    --green-3: hsl(150, 70%, 60%);
+    --green-4: hsl(150, 40%, 10%);
     --button-1: hsl(190, 100%, 60%);
     --button-2: hsl(175, 100%, 60%);
     --neutral-1: hsl(0, 0%, 25%);
@@ -96,6 +98,7 @@ html, body, #pageContainer {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill);
+    grid-gap: 1rem;
     justify-items: center;
     height:100%;
     width: 100%;
@@ -144,11 +147,6 @@ html, body, #pageContainer {
     align-self: flex-start;
 }
 
-.readContainer {
-    grid-area: read;
-    width: 100%;
-}
-
 .description, .pages, label {
     font-size: 1rem;
 }
@@ -176,7 +174,7 @@ html, body, #pageContainer {
     background: var(--button-2);
     border: none;
     border-radius: 5px;
-    transition: all 0.2s;
+    transition: all 400ms;
 }
 
 .button:hover {
@@ -214,12 +212,12 @@ form input:focus-within {
 }
 
 /* Checkboxes */
-
+/*
 .customCheckboxContainer {
     width: fit-content;
     display: block;
     position: relative;
-    /*cursor: pointer;*/
+    cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -244,7 +242,7 @@ form input:focus-within {
     top: -.175rem;
     height: 1.3rem;
     width: 1.3rem;
-    background: var(--blue-1);
+    background: transparent;
     border: 1.5px solid var(--neutral-2);
     border-radius: 4px;
     transition: 400ms;
@@ -276,6 +274,17 @@ form input:focus-within {
     border: solid var(--white-1);
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
+}
+*/
+
+.readButton {
+    grid-area: read;
+    background: var(--green-3);
+}
+
+.notReadButton {
+    grid-area: read;
+    background: var(--blue-3);
 }
 
 .removeButton {

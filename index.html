@@ -25,12 +25,7 @@
                 <h1 class="title text">Sample Title</h1>
                 <h3 class="author text">Sample Author</h3>
                 <p class="pages text semibold">Pages: <span class="numberOfPages">777</span></p>
-                <div class="readContainer">
-                    <label for="readStatus" class="text semibold customCheckboxContainer"><span class="labelText">Read:</span>
-                        <input type="checkbox" name="readStatus" class="readStatusTileCheckbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
+                <button class="readButton button"></button>
                 <button class="removeButton"><img src="images/recycle.svg"></button>
             </div>
             -->
@@ -53,10 +48,10 @@
                 <label for="readStatusInput" class="formLabel">Read: </label>
                 <select name="readStatusInput" class="formInputText" id="readStatusInput">
                     <option value="">Select...</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">Not yet</option>
+                    <option value="true">Yes</option>
+                    <option value="false">Not yet</option>
                 </select>
-                <button type="submit" class="button">Add Book</button>
+                <button type="submit" class="button" id="addBookButton">Add Book</button>
             </form>
         </div>
     </div>

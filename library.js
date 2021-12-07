@@ -19,10 +19,8 @@ function Book(title, author, pages, read) {
 const sampleBook = new Book("The Hobbit", "J.R.R. Tolkien", "295", "read");
 
 const libraryContainer = document.querySelector('#libraryContainer');
-const bookTitleInput = document.querySelector('#bookTitleInput');
-const bookAuthorInput = document.querySelector('#bookAuthorInput');
-const bookPagesInput = document.querySelector('#bookPagesInput');
-const readStatusInput = document.querySelector('#readStatusInput');
+
+const addBookButton = document.getElementById('#addBookButton');
 
 let libraryArray = [
     {
@@ -43,42 +41,45 @@ let libraryArray = [
         pages: 324,
         read: true
     },
-    {
-        title: "An Astronaut's Guide to Life",
-        author: "Chris Hadfield",
-        pages: 324,
-        read: false
-    }
 ];
 
-const addBookToLibrary = (title, author, pages, read) => {
+const getBookFromInput = () => {
     /*
-    1. accept form input
+    1. accept form input parameters
     2. create new book object from form input
-    3. add new book object to libraryArray
-    4. run displayBooks() to update display
     */
+    const bookTitleInput = document.querySelector('#bookTitleInput').value;
+    const bookAuthorInput = document.querySelector('#bookAuthorInput').value;
+    const bookPagesInput = document.querySelector('#bookPagesInput').value;
+    const readStatusInput = document.querySelector('#readStatusInput').value;
 
-    new Book (title, author, pages, read);
-
+    return new Book (bookTitleInput, bookAuthorInput, bookPagesInput, readStatusInput);
 
 }
 
-const displayBooks = () => {
+const addBookToLibrary = () => {
 
     /*
-    1. loop through libraryArray
-    2. for each book object, run createBookCard()
-    3. append bookCards as children of libraryContainer
-
+    1. store the result of getBookFromInput(); in a newBook variable
+    2. push newBook to libraryArray
+    3. rerun displayBooks() to update the library
     */
+
+    const newBook = getBookFromInput();
+    
+    libraryArray.push(newBook);
+
+    displayBooks();
+    
+}
+
+const displayBooks = () => {
 
     for (i = 0; i < libraryArray.length; i++) {
 
         createBookCard(libraryArray[i]);
 
     }
-
 
 }
 
@@ -89,7 +90,8 @@ const createBookCard = (book) => {
     const bookAuthor = document.createElement('h3');
     const bookPages = document.createElement('p');
     const bookNumberOfPages = document.createElement('span');
-    const checkContainer = createCheckmark(book.read);
+    const bookCardReadButton = document.createElement('button');
+    //const checkContainer = createCheckmark(book.read);
     const bookCardRemoveButton = document.createElement('button');
     const removeButtonImage = document.createElement('img');
 
@@ -103,6 +105,13 @@ const createBookCard = (book) => {
     bookAuthor.classList.add('author', 'text');
     bookPages.classList.add('pages', 'text', 'semibold');
     bookNumberOfPages.classList.add('numberOfPages');
+    if (book.read === true) {
+        bookCardReadButton.textContent = "Read"
+        bookCardReadButton.classList.add('button', 'readButton');
+    } else {
+        bookCardReadButton.textContent = "Not Read Yet"
+        bookCardReadButton.classList.add('button', 'notReadButton');
+    }
     bookCardRemoveButton.classList.add('removeButton');
     removeButtonImage.setAttribute('src', 'images/recycle.svg');
 
@@ -114,13 +123,15 @@ const createBookCard = (book) => {
     bookCard.appendChild(bookAuthor);
     bookCard.appendChild(bookPages);
     bookPages.appendChild(bookNumberOfPages);
-    bookCard.appendChild(checkContainer);
+    //bookCard.appendChild(checkContainer);
+    bookCard.appendChild(bookCardReadButton);
     bookCard.appendChild(bookCardRemoveButton);
     bookCardRemoveButton.appendChild(removeButtonImage);
     libraryContainer.appendChild(bookCard);
 
 }
 
+/*
 const createCheckmark = (boolean) => {
 
     const checkContainer = document.createElement('div');
@@ -150,6 +161,7 @@ const createCheckmark = (boolean) => {
     return checkContainer;
 
 }
+*/
 
 function removeBookFromLibrary() {
     /*
@@ -160,10 +172,23 @@ function removeBookFromLibrary() {
     */
 }
 
-function changeReadStatus() {
-    this.read = !this.read;
+
+const changeReadStatus = (book) => {
+    book.read = !book.read;
+    if (book.read === true) {
+    }
 }
+
+
+
 
 console.log(libraryArray);
 
 displayBooks();
+
+
+
+addBookButton.addEventListener("click", () => {
+    getBookFromInput(bookTitleInput.value, bookAuthorInput.value, bookPagesInput.value, readStatusInput.value);
+    addBookToLibrary();
+})
