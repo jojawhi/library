@@ -105,18 +105,16 @@ const createBookCard = (book) => {
     bookCard.classList.add('book');
     if (book.read === true) {
         bookCard.classList.add('readBook');
-    }
-    bookTitle.classList.add('title', 'text');
-    bookAuthor.classList.add('author', 'text');
-    bookPages.classList.add('pages', 'text', 'semibold');
-    bookNumberOfPages.classList.add('numberOfPages');
-    if (book.read === true) {
         bookCardReadButton.textContent = "Read";
         bookCardReadButton.classList.add('button', 'read');
     } else {
         bookCardReadButton.textContent = "Not Read Yet";
         bookCardReadButton.classList.add('button');
     }
+    bookTitle.classList.add('title', 'text');
+    bookAuthor.classList.add('author', 'text');
+    bookPages.classList.add('pages', 'text', 'semibold');
+    bookNumberOfPages.classList.add('numberOfPages');
     bookCardRemoveButton.classList.add('removeButton');
     removeButtonImage.setAttribute('src', 'images/recycle.svg');
 
@@ -212,6 +210,6 @@ To-do:
 - add simple backend, like firebase, for account and save functionality
 
 Bugs:
-- when selecting 'not read yet'/false in the form, added book defaults to read
-
+- generateBook() function if statements aren't working to provide both possibilities
+- clicking the remove button removes the last item in the array instead of the item you click on
 */
