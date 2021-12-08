@@ -1,22 +1,7 @@
-
-
-function Book(title, author, pages, read) {
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.read = function() {
-        if (read) {
-            return true;
-        } else {
-            return false;
-        }
-    },
-    this.info = function() {
-        return `${title} by ${author}, ${pages} pages, ${read}`;
-    }
-}
-
-const sampleBook = new Book("The Hobbit", "J.R.R. Tolkien", "295", "read");
+// Since we included js/book.js in the HTML (before this file), we have access to the Book class
+// Try to be consistent in single or double quotes usage. Especially if you're going to work in a team later where
+// you need consistency in coding style. I would recommend single quotes, it's a bit more common
+const sampleBook = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'read');
 const libraryContainer = document.querySelector('#libraryContainer');
 const newBookButton = document.querySelector('#newBookButton');
 const form = document.querySelector('#formContainer');
@@ -29,13 +14,13 @@ let libraryArray = [
         author: "Frank Herbert",
         pages: 884,
         read: false
-    }, 
+    },
     {
         title: "Wizard's First Rule",
         author: "Terry Goodkind",
         pages: 836,
         read: true
-    }, 
+    },
     {
         title: "Ender's Game",
         author: "Orson Scott-Card",
@@ -80,7 +65,7 @@ const addBookToLibrary = () => {
     }
 
     updateLibraryDisplay();
-    
+
 }
 
 const updateLibraryDisplay = () => {
@@ -128,7 +113,7 @@ const createBookCard = (book) => {
     bookTitle.textContent = book.title;
     bookAuthor.textContent = book.author;
     bookPages.textContent = `Pages: ${book.pages}`;
-    
+
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookAuthor);
     bookCard.appendChild(bookPages);
@@ -164,7 +149,7 @@ displayBooks();
 
 
 function removeBookFromLibrary() {
-    
+
     const index = libraryArray.indexOf(this);
 
     libraryArray.splice(index, 1);
@@ -175,8 +160,8 @@ function removeBookFromLibrary() {
 
 
 
-const changeReadStatus = (book) => { 
-    
+const changeReadStatus = (book) => {
+
     book.read = !book.read
 
     console.log(libraryArray);
@@ -185,9 +170,9 @@ const changeReadStatus = (book) => {
 
 
 addBookButton.addEventListener('click', (e) => {
-    
+
     e.preventDefault();
-    
+
     getBookFromInput();
     addBookToLibrary();
 
