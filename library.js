@@ -29,13 +29,13 @@ let libraryArray = [
         author: "Frank Herbert",
         pages: 884,
         read: false
-    }, 
+    },
     {
         title: "Wizard's First Rule",
         author: "Terry Goodkind",
         pages: 836,
         read: true
-    }, 
+    },
     {
         title: "Ender's Game",
         author: "Orson Scott-Card",
@@ -80,7 +80,7 @@ const addBookToLibrary = () => {
     }
 
     updateLibraryDisplay();
-    
+
 }
 
 const updateLibraryDisplay = () => {
@@ -128,7 +128,7 @@ const createBookCard = (book) => {
     bookTitle.textContent = book.title;
     bookAuthor.textContent = book.author;
     bookPages.textContent = `Pages: ${book.pages}`;
-    
+
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookAuthor);
     bookCard.appendChild(bookPages);
@@ -164,7 +164,7 @@ displayBooks();
 
 
 function removeBookFromLibrary() {
-    
+
     const index = libraryArray.indexOf(this);
 
     libraryArray.splice(index, 1);
@@ -175,8 +175,8 @@ function removeBookFromLibrary() {
 
 
 
-const changeReadStatus = (book) => { 
-    
+const changeReadStatus = (book) => {
+
     book.read = !book.read
 
     console.log(libraryArray);
@@ -185,9 +185,9 @@ const changeReadStatus = (book) => {
 
 
 addBookButton.addEventListener('click', (e) => {
-    
+
     e.preventDefault();
-    
+
     getBookFromInput();
     addBookToLibrary();
 
