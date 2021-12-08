@@ -1,22 +1,7 @@
-
-
-function Book(title, author, pages, read) {
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.read = function() {
-        if (read) {
-            return true;
-        } else {
-            return false;
-        }
-    },
-    this.info = function() {
-        return `${title} by ${author}, ${pages} pages, ${read}`;
-    }
-}
-
-const sampleBook = new Book("The Hobbit", "J.R.R. Tolkien", "295", "read");
+// Since we included js/book.js in the HTML (before this file), we have access to the Book class
+// Try to be consistent in single or double quotes usage. Especially if you're going to work in a team later where
+// you need consistency in coding style. I would recommend single quotes, it's a bit more common
+const sampleBook = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'read');
 const libraryContainer = document.querySelector('#libraryContainer');
 const newBookButton = document.querySelector('#newBookButton');
 const form = document.querySelector('#formContainer');
