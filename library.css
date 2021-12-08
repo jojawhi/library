@@ -83,6 +83,7 @@ html, body, #pageContainer {
 #pageContainer {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 #pageNav {
@@ -90,6 +91,7 @@ html, body, #pageContainer {
     flex-direction: column;
     align-content: center;
     margin-bottom: 1rem;
+    padding-top: 1rem;
 }
 
 #titleContainer,
@@ -127,7 +129,6 @@ html, body, #pageContainer {
     padding: 1rem;
     align-items: center;
     border-radius: 5px;
-
     background: var(--blue-1);
     box-shadow: 1px 1px 6px var(--blue-2);
 }
@@ -282,10 +283,14 @@ form input:focus-within {
 }
 
 
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 530px) {
+
+    #pageContainer {
+        padding: 0 1rem;
+    }
 
     #libraryContainer {
-        grid-template-columns: repeat(auto-fill);
+        grid-template-columns: 1fr 1fr;
     }
 
 }

@@ -4,13 +4,7 @@ function Book(title, author, pages, read) {
     this.title = title,
     this.author = author,
     this.pages = pages,
-    this.read = function() {
-        if (read) {
-            return true;
-        } else {
-            return false;
-        }
-    },
+    this.read = read,
     this.info = function() {
         return `${title} by ${author}, ${pages} pages, ${read}`;
     }
@@ -59,7 +53,10 @@ const getBookFromInput = () => {
     const bookTitleInput = document.getElementById('bookTitleInput').value;
     const bookAuthorInput = document.getElementById('bookAuthorInput').value;
     const bookPagesInput = document.getElementById('bookPagesInput').value;
-    const readStatusInput = document.getElementById('readStatusInput').value;
+    const readStatusSelect = document.getElementById('readStatusInput');
+    const readStatusInput = readStatusSelect.options[readStatusSelect.selectedIndex].value;
+
+    console.log(readStatusInput);
 
     return new Book (bookTitleInput, bookAuthorInput, bookPagesInput, readStatusInput);
 
@@ -106,21 +103,19 @@ const createBookCard = (book) => {
     const removeButtonImage = document.createElement('img');
 
     bookCard.classList.add('book');
-    if (book.read === false) {
-        bookCard.classList.add('unreadBook');
-    } else {
+    if (book.read === true) {
         bookCard.classList.add('readBook');
     }
     bookTitle.classList.add('title', 'text');
     bookAuthor.classList.add('author', 'text');
     bookPages.classList.add('pages', 'text', 'semibold');
     bookNumberOfPages.classList.add('numberOfPages');
-    if (book.read === false) {
-        bookCardReadButton.textContent = "Not Read Yet";
-        bookCardReadButton.classList.add('button');
-    } else {
+    if (book.read === true) {
         bookCardReadButton.textContent = "Read";
         bookCardReadButton.classList.add('button', 'read');
+    } else {
+        bookCardReadButton.textContent = "Not Read Yet";
+        bookCardReadButton.classList.add('button');
     }
     bookCardRemoveButton.classList.add('removeButton');
     removeButtonImage.setAttribute('src', 'images/recycle.svg');
@@ -212,10 +207,11 @@ formCloseButton.addEventListener('click', () => {
 
 To-do:
 
-- hide form
-- add function to show form on button click
-- add layout styles for larger screens
+- add layout styles for larger screens (need to fix grid)
 - add local storage functionality
 - add simple backend, like firebase, for account and save functionality
+
+Bugs:
+- when selecting 'not read yet'/false in the form, added book defaults to read
 
 */
