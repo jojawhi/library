@@ -21,7 +21,7 @@ class Book {
 
         // function() -> () => conversion
         // Check: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-        this.info = () => `${title} by ${author}, ${pages} pages, ${read}`
+        this.info = () => `${title} by ${author}, ${totalPages} pages, ${isRead}`
     }
 
     // (Example method that you could later add)
