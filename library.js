@@ -18,7 +18,10 @@ function Book(title, author, pages, read) {
 
 const sampleBook = new Book("The Hobbit", "J.R.R. Tolkien", "295", "read");
 const libraryContainer = document.querySelector('#libraryContainer');
-const addBookButton = document.getElementById('addBookButton');
+const newBookButton = document.querySelector('#newBookButton');
+const form = document.querySelector('#formContainer');
+const formCloseButton = document.querySelector('#formCloseButton');
+const addBookButton = document.querySelector('#addBookButton');
 
 let libraryArray = [
     {
@@ -181,17 +184,38 @@ const changeReadStatus = (book) => {
 }
 
 
-addBookButton.addEventListener("click", (e) => {
+addBookButton.addEventListener('click', (e) => {
     
     e.preventDefault();
     
     getBookFromInput();
     addBookToLibrary();
 
+    form.classList.toggle('hiddenForm');
+
     console.log(libraryArray);
 })
 
+newBookButton.addEventListener('click', () => {
 
+    form.classList.toggle('hiddenForm');
 
+})
 
+formCloseButton.addEventListener('click', () => {
 
+    form.classList.toggle('hiddenForm');
+
+})
+
+/*
+
+To-do:
+
+- hide form
+- add function to show form on button click
+- add layout styles for larger screens
+- add local storage functionality
+- add simple backend, like firebase, for account and save functionality
+
+*/

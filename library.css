@@ -81,13 +81,20 @@ html, body, #pageContainer {
 }
 
 #pageContainer {
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 #pageNav {
     display: flex;
-    justify-content: space-between;
-    padding-bottom: 3rem;
+    flex-direction: column;
+    align-content: center;
+    margin-bottom: 1rem;
+}
+
+#titleContainer,
+#newBookButtonContainer {
+    margin: 0.5rem auto;
 }
 
 #pageTitle {
@@ -100,7 +107,8 @@ html, body, #pageContainer {
     grid-template-rows: repeat(auto-fill);
     grid-gap: 1rem;
     justify-items: center;
-    height:100%;
+    padding-bottom: 2rem;
+    height: auto;
     width: 100%;
 }
 
@@ -114,8 +122,8 @@ html, body, #pageContainer {
         "pages   pages"
         "read    remove";
     grid-gap: 5px;
-    height: 18rem;
-    width: 20rem;
+    height: 15rem;
+    width: 15rem;
     padding: 1rem;
     align-items: center;
     border-radius: 5px;
@@ -158,13 +166,6 @@ html, body, #pageContainer {
     font-weight: 600;
 }
 
-/*
-.unreadBook {
-    background: var(--blue-1);
-    box-shadow: 1px 1px 6px var(--blue-2);
-}
-*/
-
 .readBook {
     background: var(--green-1);
     box-shadow: 1px 1px 6px var(--green-2);
@@ -186,10 +187,45 @@ html, body, #pageContainer {
     background: var(--button-1);
 }
 
+#formContainer {
+    position: absolute;
+    margin: 0 auto;
+    padding: 0;
+    height: 29rem;
+    width: 100%;
+    background: var(--white-1);
+    transition: all 600ms;
+}
+
+.hiddenForm {
+    transform: translateY(-29rem);
+}
+
 #newBookForm {
-    width: 30%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    width: 14rem;
+    margin: 0 auto;
+    padding: 0;
+    top: 2.5rem;
+}
+
+.formButton {
+    height: 3rem;
+    width: 3rem;
+    font-size: 1.5rem;
+    text-align: center;
+    justify-self: center;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    transition: all 400ms;
+}
+
+.formButton:hover {
+    background: var(--button-1);
 }
 
 form label {
@@ -216,78 +252,6 @@ form input:focus-within {
     outline: none;
 }
 
-/* Checkboxes */
-/*
-.customCheckboxContainer {
-    width: fit-content;
-    display: block;
-    position: relative;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.customCheckboxContainer input {
-    position: absolute;
-    right: -2.175rem;
-    top: -0.375rem;
-    opacity: 0;
-    cursor: pointer;
-    height: 1.3rem;
-    width: 1.3rem;
-    z-index: 1;
-    border-radius: 4px;
-}
-
-.checkmark {
-    position: absolute;
-    right: -2rem;
-    top: -.175rem;
-    height: 1.3rem;
-    width: 1.3rem;
-    background: transparent;
-    border: 1.5px solid var(--neutral-2);
-    border-radius: 4px;
-    transition: 400ms;
-}
-
-.customCheckboxContainer:hover input ~ .checkmark {
-    background: var(--button-1);
-}
-
-.customCheckboxContainer input:checked ~ .checkmark {
-    background: var(--button-1);
-}
-
-.checkmark::after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.customCheckboxContainer input:checked ~ .checkmark::after {
-    display: block;
-}
-
-.customCheckboxContainer .checkmark::after {
-    background: transparent;
-    left: .35rem;
-    width: .3rem;
-    height: .75rem;
-    border: solid var(--white-1);
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
-}
-*/
-/*
-.readButton {
-    grid-area: read;
-    background: var(--blue-3);
-}
-*/
-
 .read {
     grid-area: read;
     background: var(--green-3);
@@ -308,4 +272,20 @@ form input:focus-within {
 
 .removeButton:hover {
     background: var(--red-2);
+}
+
+#footer {
+    width: 100%;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 480px) {
+
+    #libraryContainer {
+        grid-template-columns: repeat(auto-fill);
+    }
+
 }

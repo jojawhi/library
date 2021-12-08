@@ -31,7 +31,8 @@
             -->
         </div>
       
-        <div class="container" id="formContainer">
+        <div class="container hiddenForm" id="formContainer">
+            <button class="formButton" id="formCloseButton">&#10006</button>
             <form id="newBookForm">
                 <label for="bookTitle" class ="formLabel" id="bookTitleLabel" required>Title:</label>
                 <input type="text" name="bookTitle" class ="formInputText" id="bookTitleInput">
@@ -39,12 +40,6 @@
                 <input type="text" name="bookAuthor" class ="formInputText" id="bookAuthorInput" required>
                 <label for="bookPages" class ="formLabel" id="bookPagesLabel">Number of Pages:</label>
                 <input type="number" name="bookPages" class ="formInputText" id="bookPagesInput" required>
-                <!--
-                <label for="readStatusForm" class ="formLabel customCheckboxContainer" id="readStatusFormLabel"><span class="labelText">Already Read?</span>
-                    <input type="checkbox" name="readStatusForm" id="#readStatusFormCheckbox">
-                    <span class="checkmark"></span>
-                </label>
-                -->
                 <label for="readStatusInput" class="formLabel">Read: </label>
                 <select name="readStatusInput" class="formInputText" id="readStatusInput" required>
                     <option value="null">Select...</option>
@@ -53,6 +48,9 @@
                 </select>
                 <button type="submit" class="button" id="addBookButton">Add Book</button>
             </form>
+        </div>
+        <div id="footer">
+            <p class="text">Designed by Josh White for The Odin Project</p>
         </div>
     </div>
 </body>
