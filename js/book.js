@@ -4,9 +4,9 @@ class Book {
     // Try to think of it as each file has their own "entity" or "responsibility". This book is an example of that.
 
     constructor(title = null, author = null, totalPages = null, isRead = false) {
-        this.title = title
-        this.author = author
-        this.totalPages = totalPages // pages -> totalPages (makes it more clear what type of var we're dealing with)
+        this.title = title,
+        this.author = author,
+        this.totalPages = totalPages, // pages -> totalPages (makes it more clear what type of var we're dealing with)
         this.isRead = false // read -> isRead (makes it more clear what type of var we're dealing with)
 
         /*
