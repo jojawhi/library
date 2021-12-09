@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 function Book(title, author, pages, read) {
@@ -11,6 +12,12 @@ function Book(title, author, pages, read) {
 }
 
 const sampleBook = new Book("The Hobbit", "J.R.R. Tolkien", "295", "read");
+=======
+// Since we included js/book.js in the HTML (before this file), we have access to the Book class
+// Try to be consistent in single or double quotes usage. Especially if you're going to work in a team later where
+// you need consistency in coding style. I would recommend single quotes, it's a bit more common
+const sampleBook = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'read');
+>>>>>>> origin/main
 const libraryContainer = document.querySelector('#libraryContainer');
 const newBookButton = document.querySelector('#newBookButton');
 const form = document.querySelector('#formContainer');
@@ -209,7 +216,11 @@ To-do:
 - add local storage functionality
 - add simple backend, like firebase, for account and save functionality
 
+<<<<<<< HEAD
 Bugs:
 - generateBook() function if statements aren't working to provide both possibilities
 - clicking the remove button removes the last item in the array instead of the item you click on
 */
+=======
+*/
+>>>>>>> origin/main
