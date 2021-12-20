@@ -13,26 +13,26 @@ let libraryArray = [
     {
         title: "Dune",
         author: "Frank Herbert",
-        pages: 884,
-        read: false
+        totalPages: 884,
+        isRead: false
     },
     {
         title: "Wizard's First Rule",
         author: "Terry Goodkind",
-        pages: 836,
-        read: true
+        totalPages: 836,
+        isRead: true
     },
     {
         title: "Ender's Game",
         author: "Orson Scott-Card",
-        pages: 324,
-        read: true
+        totalPages: 324,
+        isRead: true
     },
     {
         title: "The Hobbit",
         author: "JRR Tolkien",
-        pages: 295,
-        read: true
+        totalPages: 295,
+        isRead: true
     }
 ];
 
@@ -41,6 +41,8 @@ const displayBooks = () => {
     for (i = 0; i < libraryArray.length; i++) {
 
         createBookCard(libraryArray[i]);
+
+        console.log(libraryArray[i].isRead);
 
     }
 
@@ -56,7 +58,7 @@ const getBookFromInput = () => {
 
     console.log(readStatusInput);
 
-    return new Book (bookTitleInput, bookAuthorInput, bookPagesInput, readStatusInput);
+    return new Book(bookTitleInput, bookAuthorInput, bookPagesInput, readStatusInput);
 
 }
 
@@ -101,7 +103,7 @@ const createBookCard = (book) => {
     const removeButtonImage = document.createElement('img');
 
     bookCard.classList.add('book');
-    if (book.read === true) {
+    if (book.isRead == true) {
         bookCard.classList.add('readBook');
         bookCardReadButton.textContent = "Read";
         bookCardReadButton.classList.add('button', 'read');
@@ -118,7 +120,7 @@ const createBookCard = (book) => {
 
     bookTitle.textContent = book.title;
     bookAuthor.textContent = book.author;
-    bookPages.textContent = `Pages: ${book.pages}`;
+    bookPages.textContent = `Pages: ${book.totalPages}`;
 
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookAuthor);
@@ -169,9 +171,9 @@ const removeBookFromLibrary = (book) => {
 
 const changeReadStatus = (book) => {
 
-    book.read = !book.read
+    book.isRead = !book.isRead
 
-    console.log(libraryArray);
+    console.log(book);
 
 }
 
@@ -209,6 +211,5 @@ To-do:
 - add simple backend, like firebase, for account and save functionality
 
 Bugs:
-- generateBook() function if statements aren't working to provide both possibilities
-- clicking the remove button removes the last item in the array instead of the item you click on (fixed)
+- generateBook() function if statements aren't working to provide both readStatus possibilities
 */
