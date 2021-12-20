@@ -9,16 +9,6 @@ class Book {
         this.totalPages = totalPages, // pages -> totalPages (makes it more clear what type of var we're dealing with)
         this.isRead = false // read -> isRead (makes it more clear what type of var we're dealing with)
 
-        /*
-        This didn't make sense. It's the same as: this.read = read
-        this.read = function() {
-            if (read) {
-                return true;
-            } else {
-                return false;
-            }
-        },*/
-
         // function() -> () => conversion
         // Check: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
         this.info = () => `${title} by ${author}, ${totalPages} pages, ${isRead}`

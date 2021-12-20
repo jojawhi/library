@@ -1,7 +1,7 @@
 // Since we included js/book.js in the HTML (before this file), we have access to the Book class
 // Try to be consistent in single or double quotes usage. Especially if you're going to work in a team later where
 // you need consistency in coding style. I would recommend single quotes, it's a bit more common
-const sampleBook = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'read');
+const sampleBook = new Book('The Hobbit', 'J.R.R. Tolkien', '295', true);
 
 const libraryContainer = document.querySelector('#libraryContainer');
 const newBookButton = document.querySelector('#newBookButton');
@@ -28,6 +28,12 @@ let libraryArray = [
         pages: 324,
         read: true
     },
+    {
+        title: "The Hobbit",
+        author: "JRR Tolkien",
+        pages: 295,
+        read: true
+    }
 ];
 
 const displayBooks = () => {
@@ -139,7 +145,7 @@ const createBookCard = (book) => {
     });
 
     bookCardRemoveButton.addEventListener('click', () => {
-        removeBookFromLibrary();
+        removeBookFromLibrary(book);
     });
 
 }
@@ -148,9 +154,10 @@ const createBookCard = (book) => {
 displayBooks();
 
 
-function removeBookFromLibrary() {
+const removeBookFromLibrary = (book) => {
 
-    const index = libraryArray.indexOf(this);
+
+    const index = libraryArray.indexOf(book);
 
     libraryArray.splice(index, 1);
 
@@ -203,5 +210,5 @@ To-do:
 
 Bugs:
 - generateBook() function if statements aren't working to provide both possibilities
-- clicking the remove button removes the last item in the array instead of the item you click on
+- clicking the remove button removes the last item in the array instead of the item you click on (fixed)
 */
