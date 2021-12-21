@@ -210,7 +210,6 @@ formCloseButton.addEventListener('click', () => {
 
 To-do:
 
-- add layout styles for larger screens (need to fix grid)
 - add local storage functionality
 - add simple backend, like firebase, for account and save functionality
 
