@@ -3,7 +3,7 @@ class Book {
     // Later on when you will develop larger and more complex applications, you need to split your code up.
     // Try to think of it as each file has their own "entity" or "responsibility". This book is an example of that.
 
-    constructor(title = null, author = null, totalPages = null, isRead = null) {
+    constructor(title = null, author = null, totalPages = null, isRead = false) {
         this.title = title,
         this.author = author,
         this.totalPages = totalPages, // pages -> totalPages (makes it more clear what type of var we're dealing with)

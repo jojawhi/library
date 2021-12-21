@@ -73,10 +73,9 @@ const addBookToLibrary = () => {
     } else {
 
         libraryArray.push(newBook);
+        updateLibraryDisplay();
 
     }
-
-    updateLibraryDisplay();
 
 }
 
@@ -88,7 +87,9 @@ const updateLibraryDisplay = () => {
 }
 
 const resetLibraryDisplay = () => {
+
     libraryContainer.innerHTML = '';
+
 }
 
 const createBookCard = (book) => {
@@ -101,9 +102,11 @@ const createBookCard = (book) => {
     const bookCardReadButton = document.createElement('button');
     const bookCardRemoveButton = document.createElement('button');
     const removeButtonImage = document.createElement('img');
+    const readStatus = book.isRead;
 
     bookCard.classList.add('book');
-    if (book.isRead == true) {
+    console.log(book.isRead);
+    if (readStatus.toString() === 'true') {
         bookCard.classList.add('readBook');
         bookCardReadButton.textContent = "Read";
         bookCardReadButton.classList.add('button', 'read');
@@ -147,7 +150,9 @@ const createBookCard = (book) => {
     });
 
     bookCardRemoveButton.addEventListener('click', () => {
+
         removeBookFromLibrary(book);
+
     });
 
 }
@@ -157,7 +162,6 @@ displayBooks();
 
 
 const removeBookFromLibrary = (book) => {
-
 
     const index = libraryArray.indexOf(book);
 
@@ -211,5 +215,5 @@ To-do:
 - add simple backend, like firebase, for account and save functionality
 
 Bugs:
-- generateBook() function if statements aren't working to provide both readStatus possibilities
+
 */
