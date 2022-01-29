@@ -48,7 +48,7 @@ class Book {
         const readStatus = book.isRead;
 
         bookCard.classList.add('book');
-        //console.log(book.isRead);
+
         if (readStatus.toString() === 'true') {
             bookCard.classList.add('readBook');
             bookCardReadButton.textContent = "Read";
@@ -100,7 +100,6 @@ class Book {
         });
 
     }
-
 
     changeReadStatus = (book) => {
 
