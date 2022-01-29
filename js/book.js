@@ -14,8 +14,23 @@ class Book {
         //this.info = () => `${title} by ${author}, ${totalPages} pages, ${isRead}`
     }
 
+
+    getBookFromInput = () => {
+
+        const bookTitleInput = document.getElementById('bookTitleInput').value;
+        const bookAuthorInput = document.getElementById('bookAuthorInput').value;
+        const bookPagesInput = document.getElementById('bookPagesInput').value;
+        const readStatusSelect = document.getElementById('readStatusInput');
+        const readStatusInput = readStatusSelect.options[readStatusSelect.selectedIndex].value;
+
+        console.log(readStatusInput);
+
+        return new Book(bookTitleInput, bookAuthorInput, bookPagesInput, readStatusInput);
+
+    }
+
     // (Example method that you could later add)
-    addToLibrary(library) { // You can pass your Library object here "by reference" (https://www.javascripttutorial.net/javascript-pass-by-value/)
+    addBookToLibrary(library) { // You can pass your Library object here "by reference" (https://www.javascripttutorial.net/javascript-pass-by-value/)
         // (will not work now, but you get the idea)
         const newBook = getBookFromInput()
 
@@ -26,5 +41,25 @@ class Book {
         }
 
         updateLibraryDisplay()
+
     }
+
+    removeBookFromLibrary = (library) => {
+
+        const index = library.indexOf(this);
+
+        library.splice(index, 1);
+
+        updateLibraryDisplay();
+
+    }
+
+    changeReadStatus = (book) => {
+
+        book.isRead = !book.isRead
+
+        console.log(book);
+
+    }
+
 }
