@@ -7,23 +7,62 @@ class Library {
         this.books = [];
     }
 
+    createSampleBooks = () => {
+
+        let sampleBooks = [
+            {
+                title: "Dune",
+                author: "Frank Herbert",
+                totalPages: 884,
+                isRead: false
+            },
+            {
+                title: "Wizard's First Rule",
+                author: "Terry Goodkind",
+                totalPages: 836,
+                isRead: true
+            },
+            {
+                title: "Ender's Game",
+                author: "Orson Scott-Card",
+                totalPages: 324,
+                isRead: true
+            },
+            {
+                title: "The Hobbit",
+                author: "JRR Tolkien",
+                totalPages: 295,
+                isRead: true
+            }
+        ];
+
+        let classBooks = [];
+
+        for (let i = 0; i < sampleBooks.length; i++) {
+            classBooks[i] = new Book ().getBookFromInput(sampleBooks[i].title, sampleBooks[i].author, sampleBooks[i].totalPages, sampleBooks[i].isRead);
+            this.addBookToLibrary(classBooks[i]);
+        }
+
+    }
+
     displayBooks = () => {
 
-        let libraryArray = this.books;
+        const libraryArray = this.books;
 
-        for (i = 0; i < libraryArray.length; i++) {
+        for (let i = 0; i < libraryArray.length; i++) {
 
-            createBookCard(libraryArray[i]);
+            libraryArray[i].createBookCard(libraryArray[i]);
 
             console.log(libraryArray[i].isRead);
 
         }
+
     }
 
     updateLibraryDisplay = () => {
 
-        resetLibraryDisplay();
-        displayBooks();
+        this.resetLibraryDisplay();
+        this.displayBooks();
 
     }
 
@@ -32,6 +71,41 @@ class Library {
         libraryContainer.innerHTML = '';
 
     }
+
+
+    addBookToLibrary = (book) => { // You can pass your Library object here "by reference" (https://www.javascripttutorial.net/javascript-pass-by-value/)
+        // (will not work now, but you get the idea)
+
+        if (this.books.find(({title}) => title === book.title)) {
+            alert('This book is already in your library.')
+        } else {
+            this.books.push(book)
+        }
+
+        this.updateLibraryDisplay();
+
+    }
+
+    removeBookFromLibrary = (book) => {
+
+        const index = this.books.indexOf(book);
+
+        this.books.splice(index, 1);
+
+        library.updateLibraryDisplay();
+
+    }
+/*
+    removeBookFromLibrary = (book) => {
+
+        const index = this.books.indexOf(book);
+
+        this.books.splice(index, 1);
+
+        this.updateLibraryDisplay();
+
+    }
+
 
     createBookCard = (book) => {
 
@@ -46,7 +120,7 @@ class Library {
         const readStatus = book.isRead;
 
         bookCard.classList.add('book');
-        console.log(book.isRead);
+        //console.log(book.isRead);
         if (readStatus.toString() === 'true') {
             bookCard.classList.add('readBook');
             bookCardReadButton.textContent = "Read";
@@ -86,17 +160,18 @@ class Library {
             bookCardReadButton.classList.toggle('read');
             bookCard.classList.toggle('readBook');
 
-            changeReadStatus(book);
+            book.changeReadStatus();
 
         });
 
         bookCardRemoveButton.addEventListener('click', () => {
 
-            removeBookFromLibrary(book);
+            this.removeBookFromLibrary(book);
 
         });
 
     }
+    */
 
 }
 
@@ -107,35 +182,14 @@ const formCloseButton = document.querySelector('#formCloseButton');
 const addBookButton = document.querySelector('#addBookButton');
 
 const library = new Library();
-console.log(library);
+library.createSampleBooks();
 
-let libraryArray = [
-    {
-        title: "Dune",
-        author: "Frank Herbert",
-        totalPages: 884,
-        isRead: false
-    },
-    {
-        title: "Wizard's First Rule",
-        author: "Terry Goodkind",
-        totalPages: 836,
-        isRead: true
-    },
-    {
-        title: "Ender's Game",
-        author: "Orson Scott-Card",
-        totalPages: 324,
-        isRead: true
-    },
-    {
-        title: "The Hobbit",
-        author: "JRR Tolkien",
-        totalPages: 295,
-        isRead: true
-    }
-];
 
+
+
+
+
+/*
 const displayBooks = () => {
 
     for (i = 0; i < libraryArray.length; i++) {
@@ -261,6 +315,7 @@ const createBookCard = (book) => {
 displayBooks();
 
 
+
 const removeBookFromLibrary = (book) => {
 
     const index = libraryArray.indexOf(book);
@@ -281,17 +336,18 @@ const changeReadStatus = (book) => {
 
 }
 
+*/
 
 addBookButton.addEventListener('click', (e) => {
 
     e.preventDefault();
 
-    getBookFromInput();
-    addBookToLibrary();
+    let newBook = new Book ().getBookFromInput();
+    library.addBookToLibrary(newBook);
 
     form.classList.toggle('hiddenForm');
 
-    console.log(libraryArray);
+    console.log(library);
 })
 
 newBookButton.addEventListener('click', () => {
@@ -312,6 +368,7 @@ To-do:
 
 - add local storage functionality
 - add simple backend, like firebase, for account and save functionality
+- prevent sample books from being added when user adds their own books (if user has added books, remove createSampleBooks script or method)
 
 Bugs:
 
