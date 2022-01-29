@@ -229,7 +229,7 @@ html, body, #pageContainer {
 #formContainer {
     position: absolute;
     margin: 0 auto;
-    padding: 0;
+    padding: 1rem;
     height: 29rem;
     width: 100%;
     background: var(--white-1);
@@ -251,9 +251,13 @@ html, body, #pageContainer {
 }
 
 .formButton {
+    position: absolute;
+    right: 1.25rem;
+    top: 1rem;
     height: 3rem;
     width: 3rem;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    line-height: 3rem;
     text-align: center;
     justify-self: center;
     background: transparent;
@@ -339,6 +343,7 @@ form input:focus-within {
 
     #libraryContainer {
         grid-template-columns: 1fr 1fr;
+        max-width: 530px;
     }
 
 }
@@ -347,11 +352,21 @@ form input:focus-within {
 
     #libraryContainer {
         grid-template-columns: repeat(3, 1fr);
+        max-width: 795px;
     }
 
 }
 
 @media screen and (min-width: 1100px) {
+
+    #pageContainer {
+        max-width: 1060px;
+        margin: 0 auto;
+    }
+
+    #formContainer {
+        max-width: 1030px;
+    }
 
     #libraryContainer {
         grid-template-columns: repeat(4, 1fr);
