@@ -134,6 +134,11 @@ html, body, #pageContainer {
     border-radius: 5px;
     background: var(--blue-1);
     box-shadow: 1px 1px 6px var(--blue-2);
+    transition: all 300ms ease;
+}
+
+.book:hover {
+    transform: scale(1.05);
 }
 
 .text {
@@ -181,7 +186,7 @@ html, body, #pageContainer {
     font-family: var(--main-font);
     font-size: 1.25rem;
     font-weight: 600;
-    line-height: 2rem;
+    line-height: 2.5rem;
     text-align: center;
     background: var(--button-2);
     border: none;
@@ -193,15 +198,32 @@ html, body, #pageContainer {
     background: var(--button-1);
 }
 
-.button span {
-    height: 2rem;
-    width: auto;
-    font-size: 1.75rem;
-    font-weight: 500;
-    line-height: 2.5rem;
-    margin: 0;
-    padding: 0;
+#newBookButton {
+    position: relative;
+}
 
+#newBookButtonText {
+    height: 2.5rem;
+    line-height: 100%;
+    margin-left: 2.25rem;
+}
+
+#newBookButtonPlus {
+    background: black;
+    height: 0.175rem;
+    width: 1.25rem;
+    position: absolute;
+    top: 1.1625rem;
+}
+
+#newBookButtonPlus::before {
+    content: '';
+    background: black;
+    height: 0.175rem;
+    width: 1.25rem;
+    position: absolute;
+    left: 0rem;
+    transform: rotate(90deg);
 }
 
 #formContainer {
